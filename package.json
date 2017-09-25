@@ -1,6 +1,6 @@
 {
   "name": "htmlsanitize",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "HTML Sanitizer for the client",
   "main": "src/index.js",
   "directories": {
