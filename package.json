@@ -1,0 +1,47 @@
+{
+  "name": "htmlsanitize",
+  "version": "0.1.0",
+  "description": "HTML Sanitizer for the client",
+  "main": "src/index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "mocha",
+    "lint": "eslint src test",
+    "build": "babel src --out-dir lib --source-maps true"
+  },
+  "author": "Nicolas Escalante <nlante@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-plugin-transform-strict-mode": "^6.24.1",
+    "babel-preset-es2015": "^6.24.1",
+    "eslint": "^4.6.0",
+    "eslint-config-airbnb-base": "^12.0.0",
+    "eslint-plugin-import": "^2.7.0",
+    "jsdom": "^11.2.0",
+    "mocha": "^3.5.3"
+  },
+  "dependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-plugin-transform-strict-mode": "^6.24.1",
+    "babel-preset-es2015": "^6.24.1",
+    "eslint-config-airbnb-base": "^12.0.0",
+    "jsdom": "^11.2.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nescalante/htmlsanitize.git"
+  },
+  "keywords": [
+    "html",
+    "sanitize",
+    "sanitizer",
+    "browser"
+  ],
+  "bugs": {
+    "url": "https://github.com/nescalante/htmlsanitize/issues"
+  },
+  "homepage": "https://github.com/nescalante/htmlsanitize#readme"
+}
