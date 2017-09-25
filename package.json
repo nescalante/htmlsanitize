@@ -2,7 +2,7 @@
   "name": "htmlsanitize",
   "version": "0.1.6",
   "description": "HTML Sanitizer for the client",
-  "main": "src/index.js",
+  "main": "lib",
   "scripts": {
     "test": "mocha",
     "lint": "eslint src test",
