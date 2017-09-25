@@ -1,6 +1,6 @@
 {
   "name": "htmlsanitize",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "description": "HTML Sanitizer for the client",
   "main": "lib",
   "scripts": {
