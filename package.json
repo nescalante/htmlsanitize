@@ -3,9 +3,6 @@
   "version": "0.1.2",
   "description": "HTML Sanitizer for the client",
   "main": "src/index.js",
-  "directories": {
-    "test": "test"
-  },
   "scripts": {
     "test": "mocha",
     "lint": "eslint src test",
