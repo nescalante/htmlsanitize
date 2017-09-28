@@ -14,8 +14,6 @@ function toMap(str, lowercaseKeys) {
 
 // Regular Expressions for parsing tags and attributes
 const SURROGATE_PAIR_REGEXP = /[\uD800-\uDBFF][\uDC00-\uDFFF]/g;
-// Match everything outside of normal chars and " (quote character)
-const NON_ALPHANUMERIC_REGEXP = /([^#-~ |!])/g;
 
 // Good source of info about elements and attributes
 // http://dev.w3.org/html5/spec/Overview.html#semantics
@@ -261,7 +259,6 @@ function encodeEntities(decodedValue) {
 
       return `&#${((hi - 0xD800) * 0x400) + (low - 0xDC00) + 0x10000};`;
     })
-    .replace(NON_ALPHANUMERIC_REGEXP, (value) => `&#${value.charCodeAt(0)};`)
     .replace(/</g, '&lt;')
     .replace(/>/g, '&gt;');
 }

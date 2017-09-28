@@ -1,4 +1,3 @@
-const assert = require('assert');
 const jsdom = require('jsdom');
 
 const { JSDOM } = jsdom;

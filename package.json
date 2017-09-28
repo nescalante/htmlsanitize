@@ -4,7 +4,9 @@
   "description": "HTML Sanitizer for the client",
   "main": "lib",
   "scripts": {
-    "test": "mocha",
+    "test": "npm run lint && npm run mocha",
+    "mocha": "mocha",
+    "tdd": "mocha --watch",
     "lint": "eslint src test",
     "build": "babel src --out-dir lib --source-maps true",
     "preversion": "npm test && npm run build",

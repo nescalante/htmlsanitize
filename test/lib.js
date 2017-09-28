@@ -10,7 +10,8 @@ describe('sanitize', () => {
   it('remains the same', () => {
     const testCases = [
       '<div>foo</div>',
-      '<a href="https://foo">bar</a>'
+      '<a href="https://foo">bar</a>',
+      '<h2>Header</h2>\nParagraph.'
     ];
 
     testCases.forEach((testCase) => {
@@ -20,18 +21,18 @@ describe('sanitize', () => {
 
   it('should be filtered', () => {
     const testCases = [
-      {
-        before: '<div>foo</div><script>alert("foo")</script>',
-        after: '<div>foo</div>'
-      },
-      {
-        before: '<div onclick="alert(\'buh!\')">foo</div>',
-        after: '<div>foo</div>'
-      }
+      [
+        '<div>foo</div><script>alert("foo")</script>',
+        '<div>foo</div>'
+      ],
+      [
+        '<div onclick="alert(\'buh!\')">foo</div>',
+        '<div>foo</div>'
+      ]
     ];
 
     testCases.forEach((testCase) => {
-      assert.equal(sanitize(testCase.before), testCase.after);
+      assert.equal(sanitize(testCase[0]), testCase[1]);
     });
   });
 });
