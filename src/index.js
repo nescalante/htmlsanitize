@@ -350,11 +350,22 @@ function getNonDescendant(propName, node) {
   // An element is clobbered if its `propName` property points to one of its descendants
   const nextNode = node[propName];
 
-  if (nextNode && window.Node.prototype.contains.call(node, nextNode)) {
+  if (nextNode && containsNode(node, nextNode)) {
     throw new Error(`Failed to sanitize html because the element is clobbered: ${node.outerHTML || node.outerText}`);
   }
 
   return nextNode;
+}
+
+function containsNode(node, nextNode) {
+  // eslint-disable-next-line no-cond-assign
+  do {
+    if (node === nextNode) {
+      return true;
+    }
+  } while (nextNode = nextNode && nextNode.parentNode);
+
+  return false;
 }
 
 module.exports = function sanitizeHTML(html) {
