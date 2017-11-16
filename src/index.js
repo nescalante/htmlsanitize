@@ -38,7 +38,7 @@ const optionalEndTagElements = Object.assign(
 // Safe Block Elements - HTML5
 const blockElements = Object.assign({}, optionalEndTagBlockElements, toMap('address,article,' +
   'aside,blockquote,caption,center,del,dir,div,dl,figure,figcaption,footer,h1,h2,h3,h4,h5,' +
-  'h6,header,hgroup,hr,ins,map,menu,nav,ol,pre,section,table,ul'));
+  'h6,header,hgroup,hr,ins,map,menu,nav,ol,pre,section,table,ul,tbody,thead'));
 
 // Inline Elements - HTML5
 const inlineElements = Object.assign({}, optionalEndTagInlineElements, toMap('a,abbr,acronym,b,' +
