@@ -11,7 +11,8 @@ describe('sanitize', () => {
     const testCases = [
       '<div>foo</div>',
       '<a href="https://foo">bar</a>',
-      '<h2>Header</h2>\nParagraph.'
+      '<h2>Header</h2>\nParagraph.',
+      '<table><thead><tr><th>head</th></tr></thead><tbody><tr><td>foo</td></tr></tbody></table>'
     ];
 
     testCases.forEach((testCase) => {
