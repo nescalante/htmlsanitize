@@ -255,6 +255,7 @@ function attrToMap(attrs) {
 function encodeEntities(decodedValue) {
   return decodedValue
     .replace(/&/g, '&amp;')
+    .replace(/"/g, '&quot;')
     .replace(SURROGATE_PAIR_REGEXP, (value) => {
       const hi = value.charCodeAt(0);
       const low = value.charCodeAt(1);

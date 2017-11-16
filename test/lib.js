@@ -31,6 +31,10 @@ describe('sanitize', () => {
       [
         '<h2>Header</h2>\nParagraph.',
         '<h2>Header</h2>&#10;Paragraph.'
+      ],
+      [
+        '"quotes"',
+        '&quot;quotes&quot;'
       ]
     ];
 
