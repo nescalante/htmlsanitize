@@ -262,7 +262,13 @@ function encodeEntities(decodedValue) {
 
       return `&#${((hi - 0xD800) * 0x400) + (low - 0xDC00) + 0x10000};`;
     })
-    .replace(NON_ALPHANUMERIC_REGEXP, (value) => `&#${value.charCodeAt(0)};`)
+    .replace(NON_ALPHANUMERIC_REGEXP, (value) => {
+      if (value === '\n') {
+        return value;
+      }
+
+      return `&#${value.charCodeAt(0)};`;
+    })
     .replace(/</g, '&lt;')
     .replace(/>/g, '&gt;');
 }

@@ -10,7 +10,8 @@ describe('sanitize', () => {
   it('remains the same', () => {
     const testCases = [
       '<div>foo</div>',
-      '<a href="https://foo">bar</a>'
+      '<a href="https://foo">bar</a>',
+      '<h2>Header</h2>\nParagraph.'
     ];
 
     testCases.forEach((testCase) => {
@@ -27,10 +28,6 @@ describe('sanitize', () => {
       [
         '<div onclick="alert(\'buh!\')">foo</div>',
         '<div>foo</div>'
-      ],
-      [
-        '<h2>Header</h2>\nParagraph.',
-        '<h2>Header</h2>&#10;Paragraph.'
       ],
       [
         '"quotes"',
