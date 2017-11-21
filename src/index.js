@@ -1,3 +1,4 @@
+const escapeHTML = require('escape-html');
 const sanitizeUri = require('./uri');
 
 function toMap(str, lowercaseKeys) {
@@ -11,11 +12,6 @@ function toMap(str, lowercaseKeys) {
 
   return obj;
 }
-
-// Regular Expressions for parsing tags and attributes
-const SURROGATE_PAIR_REGEXP = /[\uD800-\uDBFF][\uDC00-\uDFFF]/g;
-// Match everything outside of normal chars and " (quote character)
-const NON_ALPHANUMERIC_REGEXP = /([^#-~ |!])/g;
 
 // Good source of info about elements and attributes
 // http://dev.w3.org/html5/spec/Overview.html#semantics
@@ -249,30 +245,6 @@ function attrToMap(attrs) {
   return map;
 }
 
-// Escapes all potentially dangerous characters, so that the
-// resulting string can be safely inserted into attribute or
-// element text.
-function encodeEntities(decodedValue) {
-  return decodedValue
-    .replace(/&/g, '&amp;')
-    .replace(/"/g, '&quot;')
-    .replace(SURROGATE_PAIR_REGEXP, (value) => {
-      const hi = value.charCodeAt(0);
-      const low = value.charCodeAt(1);
-
-      return `&#${((hi - 0xD800) * 0x400) + (low - 0xDC00) + 0x10000};`;
-    })
-    .replace(NON_ALPHANUMERIC_REGEXP, (value) => {
-      if (value === '\n') {
-        return value;
-      }
-
-      return `&#${value.charCodeAt(0)};`;
-    })
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;');
-}
-
 // create an HTML/XML writer which writes to buffer
 function htmlSanitizeWriter(buf, uriValidator) {
   let ignoreCurrentElement = false;
@@ -296,7 +268,7 @@ function htmlSanitizeWriter(buf, uriValidator) {
             buf.push(' ');
             buf.push(key);
             buf.push('="');
-            buf.push(encodeEntities(value));
+            buf.push(escapeHTML(value));
             buf.push('"');
           }
         });
@@ -317,7 +289,7 @@ function htmlSanitizeWriter(buf, uriValidator) {
     },
     chars(chars) {
       if (!ignoreCurrentElement) {
-        buf.push(encodeEntities(chars));
+        buf.push(escapeHTML(chars));
       }
     }
   };

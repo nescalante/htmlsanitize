@@ -10,6 +10,7 @@ describe('sanitize', () => {
   it('remains the same', () => {
     const testCases = [
       '<div>foo</div>',
+      '<div>🐭</div>',
       '<a href="https://foo">bar</a>',
       '<h2>Header</h2>\nParagraph.',
       '<table><thead><tr><th>head</th></tr></thead><tbody><tr><td>foo</td></tr></tbody></table>',
